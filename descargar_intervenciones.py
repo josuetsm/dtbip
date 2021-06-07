@@ -26,7 +26,7 @@ query = '''
 
 sparql.setQuery(query)
 sparql.setReturnFormat(JSON)
-print('Realizando consulta:\n'+query+'\nEn: http://datos.bcn.cl/sparql')
+print('Realizando consulta SPARQL:\n'+query+'\nEn: http://datos.bcn.cl/sparql')
 results = sparql.query().convert()
 
 # Procesar resultado
@@ -46,4 +46,4 @@ save_path = 'data'
 if not os.path.exists(save_path):
     os.makedirs(save_path)
 
-df.to_csv(os.path.join(save_path, 'intervenciones.csv'), index=False)
+df.to_csv(os.path.join(save_path, 'intervenciones.csv'), index=False, encoding = 'latin-1')
