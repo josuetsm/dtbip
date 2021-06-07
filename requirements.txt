@@ -1,0 +1,2 @@
+pyquery==1.4.1
+SPARQLWrapper==1.8.5
