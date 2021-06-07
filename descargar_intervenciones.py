@@ -5,8 +5,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 # Consultar datos en sitio de bcn
 sparql = SPARQLWrapper("http://datos.bcn.cl/sparql")
-sparql.setQuery(
-    '''
+query = '''
     SELECT ?fecha ?nombre ?texto WHERE {
         ?participacion a bcnres:Participacion;
         bcnres:tieneTipoParticipacion ?tipo;
@@ -23,8 +22,11 @@ sparql.setQuery(
         FILTER(?legislatura= <http://datos.bcn.cl/recurso/cl/legislatura/368>)
 
     }
-    ''')
+    '''
+
+sparql.setQuery(query)
 sparql.setReturnFormat(JSON)
+print('Realizando consulta:\n'+query+'\nEn: http://datos.bcn.cl/sparql')
 results = sparql.query().convert()
 
 # Procesar resultado
@@ -39,14 +41,6 @@ for var in vars_:
 
 df = pd.DataFrame(values).T
 df.columns = vars_
-
-# df['fecha'] = df['fecha'].apply(lambda s: datetime.datetime.fromisoformat(s))
-
-# df['nombre'].value_counts()[:20]
-
-# import matplotlib.pyplot as plt
-# plt.hist(df['fecha'], bins = 40)
-# plt.show()
 
 save_path = 'data'
 if not os.path.exists(save_path):

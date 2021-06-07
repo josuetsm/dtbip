@@ -4,7 +4,6 @@ import requests
 import json
 from pyquery import PyQuery
 from tqdm import tqdm
-#import datetime
 
 
 response = requests.get('https://www.camara.cl/sala/doGet.asmx/getLegislaturas')
