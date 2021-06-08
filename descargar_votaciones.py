@@ -60,7 +60,7 @@ votos_df = pd.DataFrame({'nombre': congresistas})
 votos_df = pd.concat([votos_df, pd.DataFrame(votos)], axis=1)
 votos_df.columns = ['nombre'] + [f'votacion_{k + 1}' for k in range(votos.shape[1])]
 
-save_path = 'data'
+save_path = 'dtbip/data'
 if not os.path.exists(save_path):
     os.makedirs(save_path)
 

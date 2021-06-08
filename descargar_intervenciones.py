@@ -42,8 +42,8 @@ for var in vars_:
 df = pd.DataFrame(values).T
 df.columns = vars_
 
-save_path = 'data'
+save_path = 'dtbip/data'
 if not os.path.exists(save_path):
     os.makedirs(save_path)
 
-df.to_csv(os.path.join(save_path, 'intervenciones.csv'), index=False, encoding = 'latin-1')
+df.to_csv(os.path.join(save_path, 'intervenciones.csv'), index=False)
